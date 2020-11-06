@@ -16,6 +16,7 @@ const UrlParamater = {
 export interface configs {
   domain?: string;
   url: string;
+  authorization?: string | any;
   params?: any;
   method: 'POST' | 'GET' | 'PUT' | 'DELETE';
   options?: {
@@ -24,14 +25,16 @@ export interface configs {
     formUrlEncoded?: boolean;
   };
   id?: any;
-  authorization: string;
 }
 
 export const request = (configs: configs) => {
   let header = {
     'Content-type': 'application/x-www-form-urlencoded',
-    Authorization: configs.authorization,
   };
+
+  if (configs.authorization && configs.authorization.length > 0) {
+    header['Authorization'] = configs.authorization;
+  }
 
   configs.url = `${configs.domain}/${configs.url}`;
 
