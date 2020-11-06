@@ -18,7 +18,6 @@ export interface configs {
   url: string;
   params?: any;
   method: 'POST' | 'GET' | 'PUT' | 'DELETE';
-  body?: any;
   options?: {
     json?: boolean;
     formData?: boolean;
