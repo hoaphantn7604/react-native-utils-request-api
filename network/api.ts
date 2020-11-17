@@ -64,6 +64,7 @@ export const request = (configs: configs) => {
     }
   }
 
+  console.log('log-url: ', configs.url);
   console.log('log-method: ', configs.method);
   console.log('log-header: ', header);
   console.log('log-prams: ', configs.params);
