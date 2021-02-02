@@ -11,6 +11,14 @@ const UrlParamater = {
       .map((entry: any[]) => `${entry[0]}=${entry[1]}`)
       .join('&')}`;
   },
+  encode2: (data: object) => {
+    if (!data || typeof data !== 'object') {
+      return '';
+    }
+    return `${Object.entries(data)
+      .map((entry: any[]) => `${entry[0]}=${entry[1]}`)
+      .join('&')}`;
+  },
 };
 
 export interface configs {
@@ -23,6 +31,7 @@ export interface configs {
     json?: boolean;
     formData?: boolean;
     formUrlEncoded?: boolean;
+    grantType?: boolean;
   };
   id?: any;
 }
@@ -57,10 +66,14 @@ export const request = (configs: configs) => {
       header['Content-type'] = 'multipart/form-data';
     } else {
       header['Content-type'] = 'application/x-www-form-urlencoded';
-      configs.params = Object.entries(configs.params).reduce((body, entry) => {
-        body.push({ name: entry[0], data: entry[1] });
-        return body;
-      }, [] as any[]);
+      if (configs.options?.grantType) {
+        configs.params = UrlParamater.encode2(configs.params);
+       } else {
+        configs.params = Object.entries(configs.params).reduce((body, entry) => {
+          body.push({ name: entry[0], data: entry[1] });
+          return body;
+        }, [] as any[]);
+      }
     }
   }
 
