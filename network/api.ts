@@ -52,7 +52,11 @@ export const request = (configs: configs) => {
   }
 
   if (configs.method === 'DELETE' || configs.method === 'PUT') {
-    configs.url = `${configs.url}/${configs.id}`;
+    if(configs.id){
+      configs.url = `${configs.url}/${configs.id}`;
+    }else{
+      configs.url = configs.url;
+    }
   }
 
   if (
