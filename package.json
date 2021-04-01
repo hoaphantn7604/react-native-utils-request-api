@@ -1,7 +1,7 @@
 {
   "name": "react-native-utils-request-api",
   "title": "React Native Utils Request API",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "TODO",
   "main": "index.ts",
   "repository": {
