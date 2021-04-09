@@ -22,9 +22,10 @@ const UrlParamater = {
 };
 
 export interface configs {
-  domain?: string;
+  domain?: string | undefined;
   url: string;
-  authorization?: string | any;
+  authorization?: string | undefined;
+  header?: object | undefined,
   params?: any;
   method: 'POST' | 'GET' | 'PUT' | 'DELETE';
   options?: {
@@ -33,12 +34,13 @@ export interface configs {
     formUrlEncoded?: boolean;
     grantType?: boolean;
   };
-  id?: any;
+  id?: number | string | undefined;
 }
 
 export const request = (configs: configs) => {
   let header = {
     'Content-type': 'application/x-www-form-urlencoded',
+    ...configs.header
   };
 
   if (configs.authorization && configs.authorization.length > 0) {

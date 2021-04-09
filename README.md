@@ -5,9 +5,10 @@
 `$ yarn add react-native-utils-request-api`
 
 ## Dependencies
-
-`$ yarn add rn-fetch-blob`
-`$ yarn add rxjs`
+```javascript
+ yarn add rn-fetch-blob
+ cd ios && pod install && cd ../
+```
 
 ## Usage
 ```javascript
